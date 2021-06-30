@@ -1,0 +1,28 @@
+﻿<Window x:Class="CryptoCanary.MainWindow"
+        xmlns:views="clr-namespace:CryptoCanary.View"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CryptoCanary"
+        mc:Ignorable="d"
+        Title="Crypto Canary (Phoenix)" Height="450" Width="800" Icon="/Images/Canary.png">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Vertical" Grid.Column="0">
+            <Button Name="btnOverview" Click="btnOverview_Click" Content="Overview" Margin="5"/>
+            <Button Name="btnAnalyze" Click="btnAnalyze_Click" Content="Analyze" Margin="5"/>
+            <Button Name="btnDiscover" Click="btnDiscover_Click" Content="Discover" Margin="5"/>
+        </StackPanel>
+
+        <views:OverviewView Grid.Column="1" x:Name="vwOverview"/>
+
+        <views:DetailView Grid.Column="2" x:Name="vwDetail"/>
+
+    </Grid>
+</Window>

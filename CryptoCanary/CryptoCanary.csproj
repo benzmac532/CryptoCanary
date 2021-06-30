@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\Canary.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CoinGeckoAsyncApi" Version="1.4.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.114.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Canary.png" />
+  </ItemGroup>
+
+</Project>
