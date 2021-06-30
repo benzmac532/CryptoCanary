@@ -1,6 +1,8 @@
-﻿using CryptoCanary.ViewModel;
+﻿using CoinGecko.Entities.Response.Coins;
+using CryptoCanary.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,10 +23,16 @@ namespace CryptoCanary.View
     /// </summary>
     public partial class DetailView : UserControl
     {
+        private Dictionary<string, DetailViewModel> seenCryptos = new Dictionary<string, DetailViewModel>();
+
         public DetailView()
         {
             InitializeComponent();
-            DataContext = new DetailViewModel();
+        }
+
+        public void ClearSeenCryptos(object sender, EventArgs e)
+        {
+            seenCryptos.Clear();
         }
 
         public void RegisterToOverviewItemChange(OverviewView view)
@@ -32,14 +40,30 @@ namespace CryptoCanary.View
             view.OverviewViewSelectedItemChanged += OverviewItemChanged;
         }
 
+        public void RegisterToRefreshCryptos(OverviewView view)
+        {
+            view.RefreshCryptos += ClearSeenCryptos;
+        }
+
         private void OverviewItemChanged(object sender, OverviewSelectedItemChangedEventArgs e)
         {
-            DetailViewModel model = DataContext as DetailViewModel;
-            CryptoCurrency c = e.selectedItem;
+            GetDetailInformation(e.selectedItem as CryptoCurrency);
+        }
 
-            model.Name = c.Name;
-            model.Symbol = c.Symbol;
-            model.ImageSource = c.ImageSource;
+        private async void GetDetailInformation(CryptoCurrency c)
+        {
+            if(c != null && !string.IsNullOrEmpty(c.ID))
+            {
+                if (!seenCryptos.ContainsKey(c.ID))
+                {
+                    DataContext = await APIDriver.GetDetailViewInformation(c.ID);
+                    seenCryptos.Add(c.ID, DataContext as DetailViewModel);
+                }
+                else
+                {
+                    DataContext = seenCryptos[c.ID];
+                }
+            }
         }
     }
 }

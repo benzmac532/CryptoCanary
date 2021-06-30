@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:CryptoCanary.View"
+             xmlns:local="clr-namespace:CryptoCanary.View" xmlns:viewmodel="clr-namespace:CryptoCanary.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:DetailViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Border BorderThickness="2px" BorderBrush="Black" Margin="3">
@@ -13,10 +13,72 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Vertical" Grid.Row="0">
                 <Image Source="{Binding ImageSource}" HorizontalAlignment="Center" Width="75px" MinWidth="75px" MaxWidth="75px"/>
                 <Label Content="{Binding FullName}" HorizontalAlignment="Center"/>
             </StackPanel>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <StackPanel Orientation="Vertical" Grid.Column="0" HorizontalAlignment="Center">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Orientation="Vertical" Grid.Column="0" HorizontalAlignment="Left">
+                            <Label Content="Current Price:"/>
+                            <Label Content="Market Cap:"/>
+                            <Label Content="Market Cap Rank:"/>
+                            <Label Content="Total Volume:"/>
+                            <Label Content="24 Hour Low:"/>
+                            <Label Content="24 Hour High"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Vertical" Grid.Column="1" HorizontalAlignment="Right">
+                            <Label Content="{Binding CurrentPrice, StringFormat=C}"/>
+                            <Label Content="{Binding MarketCap, StringFormat=C}"/>
+                            <Label Content="{Binding MarketCapRank}"/>
+                            <Label Content="{Binding TotalVolume, StringFormat=D}"/>
+                            <Label Content="{Binding Low24Hour, StringFormat=C}"/>
+                            <Label Content="{Binding High24Hour, StringFormat=C}"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical" Grid.Column="1" HorizontalAlignment="Center">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Orientation="Vertical" Grid.Column="0" HorizontalAlignment="Left">
+                            <Label Content="24 Hour Price Change:"/>
+                            <Label Content="24 Hour Price Percent Change:"/>
+                            <Label Content="24 Hour Market Cap Change :"/>
+                            <Label Content="24 Hour Market Cap Percent Change:"/>
+                            <Label Content="Circulating Supply:"/>
+                            <Label Content="Total Supply:"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Vertical" Grid.Column="1" HorizontalAlignment="Right">
+                            <Label Content="{Binding PriceChange24Hour, StringFormat=C}"/>
+                            <Label Content="{Binding PriceChangePercentage24Hour, StringFormat=P}"/>
+                            <Label Content="{Binding MarketCapChange24Hour, StringFormat=C}"/>
+                            <Label Content="{Binding MarketCapChangePercentage24Hour, StringFormat=P}"/>
+                            <Label Content="{Binding CirculatingSupply, StringFormat=D}"/>
+                            <Label Content="{Binding TotalSupply, StringFormat=D}"/>
+                        </StackPanel>
+
+                    </Grid>
+                </StackPanel>
+            </Grid>
 
         </Grid>
     </Border>

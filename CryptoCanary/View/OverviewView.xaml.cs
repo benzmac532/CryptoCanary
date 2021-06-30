@@ -22,6 +22,7 @@ namespace CryptoCanary.View
     public partial class OverviewView : UserControl
     {
         public event EventHandler<OverviewSelectedItemChangedEventArgs> OverviewViewSelectedItemChanged;
+        public event EventHandler RefreshCryptos;
 
         public OverviewView()
         {
@@ -30,7 +31,6 @@ namespace CryptoCanary.View
             vm.ShowLoadingScreen += ShowProgressBar;
             vm.HideLoadingScreen += HideProgressBar;
             lvAllAssets.DataContext = vm;
-
         }        
 
         private void ShowProgressBar(object sender, EventArgs e)
@@ -57,6 +57,7 @@ namespace CryptoCanary.View
         {
             OverviewViewModel vm = lvAllAssets.DataContext as OverviewViewModel;
             vm.RefreshData();
+            RefreshCryptos?.Invoke(this, new EventArgs());
         }
     }
 }

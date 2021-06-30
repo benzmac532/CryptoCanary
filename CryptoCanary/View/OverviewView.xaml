@@ -17,7 +17,7 @@
 
             <StackPanel Name="spLoading" Orientation="Vertical" VerticalAlignment="Center" Grid.Row="0">
                 <Label Content="Loading Data..." HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"/>
-                <ProgressBar IsIndeterminate="True" Width="500" Height="25"/>
+                <ProgressBar IsIndeterminate="True" Width="500" Height="25" Margin="10"/>
             </StackPanel>
 
             <ListView Name="lvAllAssets" AlternationCount="2" Grid.Column="1" ItemsSource="{Binding OverviewInformation}" SelectionChanged="lvAllAssets_SelectionChanged" Visibility="Collapsed" Grid.Row="1">

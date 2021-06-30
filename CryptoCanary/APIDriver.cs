@@ -10,6 +10,7 @@ using CoinGecko;
 using CoinGecko.Clients;
 using CoinGecko.Entities.Response;
 using CoinGecko.Entities.Response.Coins;
+using CryptoCanary.ViewModel;
 
 namespace CryptoCanary
 {
@@ -20,8 +21,8 @@ namespace CryptoCanary
             ObservableCollection<OverviewModel> collection = new ObservableCollection<OverviewModel>();
             CoinGeckoClient client = new CoinGeckoClient();
             int currentPage = 1;
-            int totalNumberDesired = 1500;
-            int totalPerPage = 250;
+            int totalNumberDesired = 300;
+            int totalPerPage = 150;
 
             while((totalPerPage * currentPage) < totalNumberDesired)
             {
@@ -37,6 +38,20 @@ namespace CryptoCanary
             }
 
             return collection;
+        }
+
+        public static async Task<DetailViewModel> GetDetailViewInformation(string ID)
+        {
+            ObservableCollection<DetailModel> collection = new ObservableCollection<DetailModel>();
+            CoinGeckoClient client = new CoinGeckoClient();
+            int currentPage = 1;
+            int totalPerPage = 1;
+
+            IReadOnlyList<CoinMarkets> coin = await client.CoinsClient.GetCoinMarkets("usd", new string[1] { ID } , "", totalPerPage, currentPage, false, "", "");
+            DetailModel model = new DetailModel(coin[0]);
+            DetailViewModel vm = new DetailViewModel(model);
+
+            return vm;
         }
     }
 }

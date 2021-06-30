@@ -78,25 +78,6 @@ namespace CryptoCanary
                 try
                 {
                     connection.Open();
-
-                    //StringBuilder createDatabase = new StringBuilder();
-                    //createDatabase.Append("CREATE DATABASE CanaryCrumbs ON PRIMARY (")
-                    //              .Append("Name=CanaryCrumbs, ")
-                    //              .Append("filename='").Append(DatabaseFilePath).Append("', ")
-                    //              .Append("size=").Append(InitialDatabaseSize).Append(", ")
-                    //              .Append("maxsize=").Append(MaxDatabaseSize).Append(", ")
-                    //              .Append("filegrowth=10%) ")
-
-                    //              .Append("LOG ON (")
-                    //              .Append("Name=CanaryCrumbsLog, ")
-                    //              .Append("filename='").Append(LogFilePath).Append("', ")
-                    //              .Append("size=").Append(InitialDatabaseSize).Append(", ")
-                    //              .Append("maxsize=").Append(MaxDatabaseSize).Append(", ")
-                    //              .Append("filegrowth=1) ");
-
-
-                    //SQLiteCommand command = new SQLiteCommand(createDatabase.ToString(), connection);
-                    //command.ExecuteNonQuery();
                 }
                 catch (Exception e)
                 {

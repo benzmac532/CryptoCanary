@@ -36,6 +36,7 @@ namespace CryptoCanary
             }
 
             vwDetail.RegisterToOverviewItemChange(vwOverview);
+            vwDetail.RegisterToRefreshCryptos(vwOverview);
         }
 
         private void btnOverview_Click(object sender, RoutedEventArgs e)

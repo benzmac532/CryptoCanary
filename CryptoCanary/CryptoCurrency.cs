@@ -14,6 +14,7 @@ namespace CryptoCanary
         {
             if (m != null)
             {
+                ID = m.Id;
                 ImageSource = m.Image.ToString();
                 Name = m.Name;
                 Symbol = m.Symbol;
@@ -30,6 +31,25 @@ namespace CryptoCanary
                 Low24Hour = (decimal)m.Low24H;
                 High24Hour = (decimal)m.High24H;
             }
+        }
+
+        public CryptoCurrency(OverviewModel o)
+        {
+            if (o != null)
+            {
+                ID = o.ID;
+                ImageSource = o.ImageSource.ToString();
+                Name = o.Name;
+                Symbol = o.Symbol;
+                CurrentPrice = (decimal)o.CurrentPrice;
+                MarketCap = (decimal)o.MarketCap;
+                TotalVolume = (decimal)o.TotalVolume;
+            }
+        }
+
+        public string ID
+        {
+            get; set;
         }
 
         public string ImageSource
