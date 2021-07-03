@@ -33,6 +33,7 @@ namespace CryptoCanary.View
         public void ClearSeenCryptos(object sender, EventArgs e)
         {
             seenCryptos.Clear();
+            DataContext = null;
         }
 
         public void RegisterToOverviewItemChange(OverviewView view)

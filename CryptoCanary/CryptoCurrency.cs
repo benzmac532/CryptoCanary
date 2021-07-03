@@ -18,18 +18,18 @@ namespace CryptoCanary
                 ImageSource = m.Image.ToString();
                 Name = m.Name;
                 Symbol = m.Symbol;
-                CurrentPrice = (decimal)m.CurrentPrice;
-                MarketCap = (decimal)m.MarketCap;
-                TotalVolume = (decimal)m.TotalVolume;
-                PriceChangePercent1Hour = (decimal)m.PriceChangePercentage1HInCurrency;
-                PriceChangePercent24Hour = (decimal)m.PriceChangePercentage24H;
-                PriceChangePercent7Day = (decimal)m.PriceChangePercentage7DInCurrency;
-                PriceChangePercent14Day = (decimal)m.PriceChangePercentage14DInCurrency;
-                PriceChangePercent30Day = (decimal)m.PriceChangePercentage30DInCurrency;
-                PriceChangePercent200Day = (decimal)m.PriceChangePercentage200DInCurrency;
-                PriceChangePercent1Year = (decimal)m.PriceChangePercentage1YInCurrency;
-                Low24Hour = (decimal)m.Low24H;
-                High24Hour = (decimal)m.High24H;
+                CurrentPrice = (m.CurrentPrice != null) ? (decimal)m.CurrentPrice : 0;
+                MarketCap = (m.MarketCap != null) ? (decimal)m.MarketCap : 0;
+                TotalVolume = (m.TotalVolume != null) ? (decimal)m.TotalVolume : 0;
+                PriceChangePercent1Hour = (m.PriceChangePercentage1HInCurrency != null) ? (decimal)m.PriceChangePercentage1HInCurrency : 0;
+                PriceChangePercent24Hour = (m.PriceChangePercentage24H != null) ? (decimal)m.PriceChangePercentage24H : 0;
+                PriceChangePercent7Day = (m.PriceChangePercentage7DInCurrency != null) ? (decimal)m.PriceChangePercentage7DInCurrency : 0;
+                PriceChangePercent14Day = (m.PriceChangePercentage14DInCurrency != null) ? (decimal)m.PriceChangePercentage14DInCurrency : 0;
+                PriceChangePercent30Day = (m.PriceChangePercentage30DInCurrency != null) ? (decimal)m.PriceChangePercentage30DInCurrency : 0;
+                PriceChangePercent200Day = (m.PriceChangePercentage200DInCurrency != null) ? (decimal)m.PriceChangePercentage200DInCurrency : 0;
+                PriceChangePercent1Year = (m.PriceChangePercentage1YInCurrency != null) ? (decimal)m.PriceChangePercentage1YInCurrency : 0;
+                Low24Hour = (m.Low24H != null) ? (decimal)m.Low24H : 0;
+                High24Hour = (m.High24H != null) ? (decimal)m.High24H : 0;
             }
         }
 

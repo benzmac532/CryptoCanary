@@ -30,6 +30,8 @@ namespace CryptoCanary
         {
             InitializeComponent();
 
+            Logger.Instance.LoggedMessage += DisplayLoggedMessage;
+
             if (!DatabaseDriver.DatabaseExists())
             {
                 DatabaseDriver.CreateInitialDatabase();
@@ -37,6 +39,13 @@ namespace CryptoCanary
 
             vwDetail.RegisterToOverviewItemChange(vwOverview);
             vwDetail.RegisterToRefreshCryptos(vwOverview);
+
+            UpdateCurrentCryptoData();
+        }
+
+        private void DisplayLoggedMessage(object sender, LoggerMessageArgs e)
+        {
+            vwMessageView.AddMessage(e.Message, e.Level);
         }
 
         private void btnOverview_Click(object sender, RoutedEventArgs e)
@@ -55,6 +64,12 @@ namespace CryptoCanary
         {
             vwOverview.Visibility = Visibility.Collapsed;
             vwDetail.Visibility = Visibility.Collapsed;
+        }
+
+        private async void UpdateCurrentCryptoData()
+        {
+            await DatabaseDriver.UpdateCryptocurrencyData();
+            await DatabaseDriver.UpdateHistoricalData();
         }
     }
 }

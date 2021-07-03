@@ -6,23 +6,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CryptoCanary"
         mc:Ignorable="d"
-        Title="Crypto Canary (Phoenix)" Height="450" Width="800" Icon="/Images/Canary.png">
+        Title="Crypto Canary (Phoenix)" Height="594" Width="1200" Icon="/Images/Canary.png">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Vertical" Grid.Column="0">
-            <Button Name="btnOverview" Click="btnOverview_Click" Content="Overview" Margin="5"/>
-            <Button Name="btnAnalyze" Click="btnAnalyze_Click" Content="Analyze" Margin="5"/>
-            <Button Name="btnDiscover" Click="btnDiscover_Click" Content="Discover" Margin="5"/>
-        </StackPanel>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-        <views:OverviewView Grid.Column="1" x:Name="vwOverview"/>
+            <StackPanel Orientation="Vertical" Grid.Column="0" VerticalAlignment="Stretch">
+                <Button Name="btnOverview" Click="btnOverview_Click" Content="Overview" Margin="5"/>
+                <Button Name="btnAnalyze" Click="btnAnalyze_Click" Content="Analyze" Margin="5"/>
+                <Button Name="btnDiscover" Click="btnDiscover_Click" Content="Discover" Margin="5"/>
+            </StackPanel>
 
-        <views:DetailView Grid.Column="2" x:Name="vwDetail"/>
+            <views:OverviewView Grid.Column="1" x:Name="vwOverview" VerticalAlignment="Stretch"/>
+
+            <views:DetailView Grid.Column="2" x:Name="vwDetail" VerticalAlignment="Stretch"/>
+
+        </Grid>
+
+        <Expander ExpandDirection="Up" Grid.Row="1">
+            <views:MessageView x:Name="vwMessageView" MaxHeight="350"/>
+        </Expander>
 
     </Grid>
 </Window>

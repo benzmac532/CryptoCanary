@@ -16,4 +16,16 @@ namespace CryptoCanary
             selectedItem = new CryptoCurrency(o as OverviewModel);
         }
     }
+
+    public class LoggerMessageArgs : EventArgs
+    {
+        public string Message;
+        public LogLevels Level;
+
+        public LoggerMessageArgs(string message, LogLevels level)
+        {
+            Message = message;
+            Level = level;
+        }
+    }
 }
